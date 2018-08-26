@@ -24,7 +24,7 @@
 
         private void AddBoxToRepository(ProcessStartedEventArgs eventArgs)
         {
-            boxRepository.AddBoxForProcess(eventArgs);
+            boxRepository.AddBoxToCache(eventArgs);
         }
 
         private bool IsValidProcess(ProcessStartedEventArgs eventArgs)

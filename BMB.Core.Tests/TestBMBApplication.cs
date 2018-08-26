@@ -1,5 +1,7 @@
 ﻿namespace BMB.Core.Tests
 {
+    using System.Diagnostics;
+
     using Core.BoxManagement;
 
     using Listener;
@@ -22,7 +24,7 @@
         [SetUp]
         public void SetUp()
         {
-            processStartedEventArgs = new ProcessStartedEventArgs();
+            processStartedEventArgs = CreateProcessStartedEventArgs();
 
             processListenerMock = Substitute.For<IProcessListener>();
             processHandlerMock = Substitute.For<IProcessHandler>();
@@ -51,6 +53,11 @@
         public void Stop_WhenInvoked_StopsProcessListening()
         {
             InvokeStop();
+        }
+
+        private ProcessStartedEventArgs CreateProcessStartedEventArgs()
+        {
+            return new ProcessStartedEventArgs(Process.GetCurrentProcess());
         }
 
         private BMBApplication CreateSystemUnderTest()

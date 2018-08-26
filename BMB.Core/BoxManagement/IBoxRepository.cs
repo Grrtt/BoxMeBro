@@ -4,6 +4,6 @@
 
     public interface IBoxRepository
     {
-        void AddBoxForProcess(ProcessStartedEventArgs eventArgs);
+        void AddBoxToCache(ProcessStartedEventArgs eventArgs);
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace BMB.Core.Tests.BoxManagement
 {
+    using System.Diagnostics;
+
     using Core.BoxManagement;
 
     using Listener;
@@ -26,7 +28,7 @@
 
             InvokeHandleProcess();
 
-            boxRepositoryMock.DidNotReceiveWithAnyArgs().AddBoxForProcess(null);
+            boxRepositoryMock.DidNotReceiveWithAnyArgs().AddBoxToCache(null);
         }
 
         [Test]
@@ -36,7 +38,7 @@
 
             InvokeHandleProcess();
 
-            boxRepositoryMock.Received(1).AddBoxForProcess(eventArgs);
+            boxRepositoryMock.Received(1).AddBoxToCache(eventArgs);
         }
 
         [Test]
@@ -50,11 +52,16 @@
         [SetUp]
         public void SetUp()
         {
-            eventArgs = new ProcessStartedEventArgs();
+            eventArgs = CreateProcessStartedEventArgs();
 
             processValidatorMock = Substitute.For<IProcessValidator>();
             boxRepositoryMock = Substitute.For<IBoxRepository>();
             systemUnderTest = CreateSystemUnderTest();
+        }
+
+        private ProcessStartedEventArgs CreateProcessStartedEventArgs()
+        {
+            return new ProcessStartedEventArgs(Process.GetCurrentProcess());
         }
 
         private ProcessHandler CreateSystemUnderTest()

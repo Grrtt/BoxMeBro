@@ -9,6 +9,7 @@
         void Start();
 
         void Stop();
+
     }
 
     public delegate void ProcessStartedEventHandler(object sender, ProcessStartedEventArgs args);

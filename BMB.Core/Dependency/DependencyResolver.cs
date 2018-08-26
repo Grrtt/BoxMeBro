@@ -1,6 +1,6 @@
 ﻿namespace BMB.Core.Dependency
 {
-    public class DependencyResolver
+    public static class DependencyResolver
     {
         public static T Resolve<T>()
         {

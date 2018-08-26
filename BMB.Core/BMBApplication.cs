@@ -33,8 +33,8 @@
 
         private void StartProcessListener()
         {
-            processListener.Start();
             processListener.ProcessStartedEvent += HandleProcess;
+            processListener.Start();
         }
     }
 }
