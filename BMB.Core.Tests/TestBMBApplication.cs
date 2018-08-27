@@ -4,11 +4,13 @@
 
     using Core.BoxManagement;
 
-    using Listener;
+    using Keyboard;
 
     using NSubstitute;
 
     using NUnit.Framework;
+
+    using Process;
 
     [TestFixture]
     public class TestBMBApplication
@@ -36,7 +38,7 @@
         {
             InvokeStart();
 
-            processListenerMock.ProcessStartedEvent += Raise.EventWith(systemUnderTest, processStartedEventArgs);
+            processListenerMock.ProcessStarted += Raise.EventWith(systemUnderTest, processStartedEventArgs);
 
             processHandlerMock.Received(1).HandleProcess(processStartedEventArgs);
         }
@@ -62,7 +64,11 @@
 
         private BMBApplication CreateSystemUnderTest()
         {
-            return new BMBApplication(processListenerMock, processHandlerMock);
+            return new BMBApplication(
+                processListenerMock,
+                processHandlerMock,
+                new KeyboardListener(),
+                new DefaultKeyboardHandler(new BoxRepository()));
         }
 
         private void InvokeStart()

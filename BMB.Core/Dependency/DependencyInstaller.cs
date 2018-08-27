@@ -2,6 +2,8 @@
 {
     using System.IO;
 
+    using BoxManagement;
+
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
@@ -10,13 +12,28 @@
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            RegisterServicesInDirectory(Directory.GetCurrentDirectory(), container);
+            RegisterServicesInNamespace("BMB.Core", container);
+            RegisterServicesInNamespace("BMB.Core.Keyboard", container);
+            RegisterServicesInNamespace("BMB.Core.Process", container);
+            RegisterServiceAsSingleton<IBoxRepository, BoxRepository>(container);
         }
 
-        private void RegisterServicesInDirectory(string directory, IWindsorContainer container)
+        private static AssemblyFilter GetCurrentDirectory()
+        {
+            return new AssemblyFilter(Directory.GetCurrentDirectory());
+        }
+
+        private void RegisterServiceAsSingleton<TService, TImplmentation>(IWindsorContainer container)
+            where TService : class where TImplmentation : TService
+        {
+            container.Register(Component.For<TService>().ImplementedBy<TImplmentation>().LifestyleSingleton());
+        }
+
+        private void RegisterServicesInNamespace(string nameSpace, IWindsorContainer container)
         {
             container.Register(
-                Classes.FromAssemblyInDirectory(new AssemblyFilter(directory)).Pick().WithServiceAllInterfaces());
+                Classes.FromAssemblyInDirectory(GetCurrentDirectory()).InNamespace(nameSpace)
+                       .WithServiceAllInterfaces());
         }
     }
 }

@@ -4,11 +4,17 @@
 
     public class WindowBox
     {
-        public WindowBox(IntPtr windowHandle)
+        public WindowBox(IntPtr mainWindowHandle, IntPtr handle, int processId)
         {
-            WindowHandle = windowHandle;
+            MainWindowHandle = mainWindowHandle;
+            Handle = handle;
+            ProcessId = processId;
         }
 
-        public IntPtr WindowHandle { get; }
+        public IntPtr Handle { get; }
+
+        public IntPtr MainWindowHandle { get; }
+
+        public int ProcessId { get; }
     }
 }

@@ -4,11 +4,11 @@
 
     using Core.BoxManagement;
 
-    using Listener;
-
     using NSubstitute;
 
     using NUnit.Framework;
+
+    using Process;
 
     [TestFixture]
     public class TestProcessHandler

@@ -1,6 +1,9 @@
-﻿namespace BMB.Core.BoxManagement
+﻿namespace BMB.Core.Process
 {
-    using Listener;
+    using System;
+    using System.Linq;
+
+    using BoxManagement;
 
     public class ProcessHandler : IProcessHandler
     {
@@ -16,9 +19,18 @@
 
         public void HandleProcess(ProcessStartedEventArgs eventArgs)
         {
+            LogProcess(eventArgs);
             if (IsValidProcess(eventArgs))
             {
                 AddBoxToRepository(eventArgs);
+            }
+        }
+
+        public void HandleProcess(ProcessStoppedEventArgs eventArgs)
+        {
+            if (BoxInRepository(eventArgs))
+            {
+                boxRepository.Remove(eventArgs.ProcessId);
             }
         }
 
@@ -27,9 +39,19 @@
             boxRepository.AddBoxToCache(eventArgs);
         }
 
+        private bool BoxInRepository(ProcessStoppedEventArgs eventArgs)
+        {
+            return boxRepository.GetAll().Any(box => box.ProcessId == eventArgs.ProcessId);
+        }
+
         private bool IsValidProcess(ProcessStartedEventArgs eventArgs)
         {
             return processValidator.ValidateProcess(eventArgs);
+        }
+
+        private void LogProcess(ProcessStartedEventArgs eventArgs)
+        {
+            Console.WriteLine(eventArgs.MainWindowHandle);
         }
     }
 }

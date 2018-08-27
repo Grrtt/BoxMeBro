@@ -1,7 +1,5 @@
-﻿namespace BMB.Core.BoxManagement
+﻿namespace BMB.Core.Process
 {
-    using Listener;
-
     public interface IProcessValidator
     {
         bool ValidateProcess(ProcessStartedEventArgs eventArgs);

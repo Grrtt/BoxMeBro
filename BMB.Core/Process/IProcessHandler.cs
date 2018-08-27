@@ -1,9 +1,9 @@
-﻿namespace BMB.Core.BoxManagement
+﻿namespace BMB.Core.Process
 {
-    using Listener;
-
     public interface IProcessHandler
     {
         void HandleProcess(ProcessStartedEventArgs eventArgs);
+
+        void HandleProcess(ProcessStoppedEventArgs eventArgs);
     }
 }

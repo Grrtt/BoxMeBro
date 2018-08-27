@@ -15,13 +15,18 @@
         public static void RegisterDependencies()
         {
             AssemblyFilter currentDirectoryAssemblyFilter = GetCurrentDirectoryAssemblyFilter();
-            Instance.Install(FromAssembly.InDirectory(currentDirectoryAssemblyFilter));
+            RegisterDirectory(currentDirectoryAssemblyFilter);
         }
 
         private static AssemblyFilter GetCurrentDirectoryAssemblyFilter()
         {
             string currentDirectory = Directory.GetCurrentDirectory();
             return new AssemblyFilter(currentDirectory);
+        }
+
+        private static void RegisterDirectory(AssemblyFilter directoryAssemblyFilter)
+        {
+            Instance.Install(FromAssembly.InDirectory(directoryAssemblyFilter));
         }
     }
 }
