@@ -24,8 +24,7 @@
         private Process GetProcess(EventArrivedEventArgs eventArrivedEventArgs)
         {
             uint processId = (uint)eventArrivedEventArgs.NewEvent.Properties["ProcessId"].Value;
-            Process process = Process.GetProcessById((int)processId);
-            return process;
+            return Process.GetProcessById((int)processId);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace AppRunner
 {
-    using System;
     using System.Windows.Forms;
 
     using BMB.Core;
@@ -13,7 +12,7 @@
             //IntPtr consoleWindowsHandle = Kernel32.GetConsoleWindow();
             //User32.ShowWindow(consoleWindowsHandle, User32.SW_HIDE);
 
-            DependencyRegistration.RegisterDependencies();
+            Registration.RegisterDependencies();
 
             BMBApplication bmb = Resolve<BMBApplication>();
 
@@ -24,7 +23,7 @@
 
         private static T Resolve<T>()
         {
-            return DependencyResolver.Resolve<T>();
+            return Resolver.Resolve<T>();
         }
     }
 }

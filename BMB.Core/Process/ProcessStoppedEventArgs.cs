@@ -5,9 +5,9 @@
 
     public class ProcessStoppedEventArgs : EventArgs
     {
-        public ProcessStoppedEventArgs(EventArrivedEventArgs e)
+        public ProcessStoppedEventArgs(EventArrivedEventArgs eventArgs)
         {
-            ProcessId = Convert.ToInt32(e.NewEvent.Properties["ProcessId"].Value);
+            ProcessId = Convert.ToInt32(eventArgs.NewEvent.Properties["ProcessId"].Value);
         }
 
         public int ProcessId { get; }

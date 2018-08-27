@@ -56,12 +56,7 @@
         {
             InvokeStop();
         }
-
-        private ProcessStartedEventArgs CreateProcessStartedEventArgs()
-        {
-            return new ProcessStartedEventArgs(Process.GetCurrentProcess());
-        }
-
+        
         private BMBApplication CreateSystemUnderTest()
         {
             return new BMBApplication(

@@ -6,7 +6,7 @@
     using Castle.Windsor;
     using Castle.Windsor.Installer;
 
-    public static class DependencyRegistration
+    public static class Registration
     {
         private static IWindsorContainer windsorContainer;
 

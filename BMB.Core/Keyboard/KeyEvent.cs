@@ -1,6 +1,6 @@
 ﻿namespace BMB.Core.Keyboard
 {
-    public enum KeyEvent : ushort
+    public enum KeyEvent
     {
         KeyDown = 0x0100,
 
