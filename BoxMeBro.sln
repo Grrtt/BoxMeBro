@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMB.WoW", "BMB.WoW\BMB.WoW.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppRunner", "AppRunner\AppRunner.csproj", "{8D5A967F-424A-45D2-8714-5E7B70F44740}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMB.Core.UI", "BMB.Core.UI\BMB.Core.UI.csproj", "{A20E5BC8-CD16-4E96-A72B-188AC13A8F3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8D5A967F-424A-45D2-8714-5E7B70F44740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5A967F-424A-45D2-8714-5E7B70F44740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D5A967F-424A-45D2-8714-5E7B70F44740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A20E5BC8-CD16-4E96-A72B-188AC13A8F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20E5BC8-CD16-4E96-A72B-188AC13A8F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20E5BC8-CD16-4E96-A72B-188AC13A8F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20E5BC8-CD16-4E96-A72B-188AC13A8F3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

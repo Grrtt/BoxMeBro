@@ -23,10 +23,10 @@
             return new AssemblyFilter(Directory.GetCurrentDirectory());
         }
 
-        private void RegisterServiceAsSingleton<TService, TImplmentation>(IWindsorContainer container)
-            where TService : class where TImplmentation : TService
+        private void RegisterServiceAsSingleton<TService, TImplementation>(IWindsorContainer container)
+            where TService : class where TImplementation : TService
         {
-            container.Register(Component.For<TService>().ImplementedBy<TImplmentation>().LifestyleSingleton());
+            container.Register(Component.For<TService>().ImplementedBy<TImplementation>().LifestyleSingleton());
         }
 
         private void RegisterServicesInNamespace(string nameSpace, IWindsorContainer container)

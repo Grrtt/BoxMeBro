@@ -13,9 +13,7 @@
             //User32.ShowWindow(consoleWindowsHandle, User32.SW_HIDE);
 
             Registration.RegisterDependencies();
-
             BMBApplication bmb = Resolve<BMBApplication>();
-
             bmb.Start();
             Application.Run();
             bmb.Stop();
